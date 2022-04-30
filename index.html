@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="kr" dir="ltr">
+  <head>
+    <script type="text/javascript">
+      coin = 1000
+      sign1 = 0;
+      on = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      open = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      rodUp = 0
+      treeUp = 0
+      mineUp = 0
+      waterUp = 0
+      hTreeUp = 0
+      setUp = 0
+      setYard = [0, 0, 0, 0, 0]
+
+      function plusCoin(){
+        plusUp = rodUp + treeUp + mineUp + waterUp + hTreeUp + setUp
+        return plusUp
+      }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <title>Clicker Tast</title>
+
+  </head>
+  <body style="-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none">
+    <img id = "uVoid" src = "ui/ui_up_void.png">
+    <img id = "dVoid" src = "ui/ui_down_void.png">
+    <div class="relative">
+      <div class="image">
+        <img src = "ui/ui_coin.png" webkit-user-drag: none;>
+        <div class="text">
+          <span style="text-shadow: -1px 0 #630d26, 0 1px #630d26, 1px 0 #630d26, 0 -1px #630d26;">
+            <font color=#fbc531>
+              <div id = "output"></div>
+            </font>
+          </span>
+        </div>
+      </div>
+		</div>
+
+    <input type="button" class="b1" onclick="b1Click();"> <script type="text/javascript"> output.innerHTML = coin;
+      function b1Click() { //기본 타일
+        coin += 1 + plusCoin()
+        var output = document.getElementById('output'); output.innerHTML = coin } </script> </input>
+
+
+    <input type="button" class="b2" onclick="b2Click();"> <script type="text/javascript">
+      function b2Click() { //태초의 점선 타일
+        if ( coin > 19 || on[2] ) { //필요한 코인량-1; on[n] - n은 지금 버튼 숫자;
+          if ( on[2] == 0 ) { on[2] = 1; coin -= 20;
+            if(on[4] == 1){$('.b6').css('background', 'url("off/off_40.gif")');}
+            if(on[3] == 1){$('.b8').css('background', 'url("off/off_40.gif")');}}
+                         // ↑ 만약 n번째 타일과 내 타일이 여리면 다른 타일이 열리는 그거임!
+          $('.b2').css('background', 'url("bu/bu_soil08.png")'); } var output = document.getElementById('output'); output.innerHTML = coin } </script> </input>
+    <input type="button" class="b3" onclick="b3Click();"> <script type="text/javascript">
+      function b3Click() {
+        if ( coin > 19 || on[3] ) {
+          if ( on[3] == 0 ) { on[3] = 1; coin -= 20;
+            if(on[2] == 1){$('.b8').css('background', 'url("off/off_40.gif")');}
+            if(on[5] == 1){$('.b9').css('background', 'url("off/off_40.gif")');}}
+          $('.b3').css('background', 'url("bu/bu_soil06.png")'); } var output = document.getElementById('output'); output.innerHTML = coin } </script> </input>
+    <input type="button" class="b4" onclick="b4Click();"> <script type="text/javascript">
+      function b4Click() {
+        if ( coin > 19 || on[4] ) {
+          if ( on[4] == 0 ) { on[4] = 1; coin -= 20;
+            if(on[2] == 1){$('.b6').css('background', 'url("off/off_40.gif")');}
+            if(on[5] == 1){$('.b7').css('background', 'url("off/off_40.gif")');}}
+          $('.b4').css('background', 'url("bu/bu_soil04.png")'); } var output = document.getElementById('output'); output.innerHTML = coin; } </script> </input>
+    <input type="button" class="b5" onclick="b5Click();"> <script type="text/javascript">
+      function b5Click() {
+        if ( coin > 19 || on[5] ) {
+          if ( on[5] == 0 ) { on[5] = 1; coin -= 20;
+            if(on[4] == 1){$('.b7').css('background', 'url("off/off_40.gif")');}
+            if(on[3] == 1){$('.b9').css('background', 'url("off/off_40.gif")');}}
+          $('.b5').css('background', 'url("bu/bu_soil02.png")'); } var output = document.getElementById('output'); output.innerHTML = coin } </script> </input>
+
+
+    <input type="button" class="b6" onclick="b6Click();"> <script type="text/javascript">
+        function b6Click() { //후대의 점선 타일
+          if ( on[2] == 1 && on[4] == 1 ) { // 태초의 해금해야 할 타일들 (ex - on[2]라면 2번 타일이 해금되야지 여기가 됨)
+            if ( coin > 39 || on[6] ) { //필요한 코인량-1; on[n] - n은 지금 버튼 숫자;
+              if ( on[6] == 0 ) { on[6] = 1; coin -= 40; //그냥 on[n];(2번) 해금 시 필요한 코인 + 2;
+                setYard[1] = 1; if(setYard[1] == 1 && setYard[2] == 1 && setYard[3] == 1 && setYard[4] == 1){setUp += 1; $('.b10').css('background', 'url("off/off_150.gif")'); $('.b11').css('background', 'url("off/off_80.gif")');}}
+              $('.b6').css('background', 'url("bu/bu_soil07.png")');}}var output = document.getElementById('output'); output.innerHTML = coin} </script> </input>
+    <input type="button" class="b7" onclick="b7Click();"> <script type="text/javascript">
+      function b7Click() {
+        if ( on[4] == 1 && on[5] == 1 ) {
+          if ( coin > 39 || on[7] ) {
+            if ( on[7] == 0 ) { on[7] = 1; coin -= 40;
+              setYard[2] = 1; if(setYard[1] == 1 && setYard[2] == 1 && setYard[3] == 1 && setYard[4] == 1){setUp += 1; $('.b10').css('background', 'url("off/off_150.gif")'); $('.b11').css('background', 'url("off/off_80.gif")');}}
+            $('.b7').css('background', 'url("bu/bu_soil01.png")');}}var output = document.getElementById('output'); output.innerHTML = coin} </script> </input>
+    <input type="button" class="b8" onclick="b8Click();"> <script type="text/javascript">
+      function b8Click() {
+        if ( on[2] == 1 && on[3] == 1 ) {
+          if ( coin > 39 || on[8] ) {
+            if ( on[8] == 0 ) { on[8] = 1; coin -= 40;
+              setYard[3] = 1; if(setYard[1] == 1 && setYard[2] == 1 && setYard[3] == 1 && setYard[4] == 1){setUp += 1; $('.b10').css('background', 'url("off/off_150.gif")'); $('.b11').css('background', 'url("off/off_80.gif")');}}
+            $('.b8').css('background', 'url("bu/bu_soil09.png")');}}var output = document.getElementById('output'); output.innerHTML = coin} </script> </input>
+    <input type="button" class="b9" onclick="b9Click();"> <script type="text/javascript">
+      function b9Click() {
+        if ( on[4] == 1 && on[5] == 1 ) {
+          if ( coin > 39 || on[9] ) {
+            if ( on[9] == 0 ) { on[9] = 1; coin -= 40;
+              setYard[4] = 1; if(setYard[1] == 1 && setYard[2] == 1 && setYard[3] == 1 && setYard[4] == 1){setUp += 1; $('.b10').css('background', 'url("off/off_150.gif")'); $('.b11').css('background', 'url("off/off_80.gif")');}}
+            $('.b9').css('background', 'url("bu/bu_soil03.png")');}}var output = document.getElementById('output'); output.innerHTML = coin} </script> </input>
+
+    <input type="button" class="b10" onclick="b10Click();"> <script type="text/javascript"> //표지판
+      function b10Click() {
+        if ( setYard[1] == 1 && setYard[2] == 1 && setYard[3] == 1 && setYard[4] == 1 ) {
+          if ( coin > 149 || on[10] ) {
+            if ( on[10] == 0 ) { on[10] = 1; coin -= 150; }
+            //여기에 표지판 내용 보이게 하는 코드 좀 ( 표지판에 튜토리얼 )
+            $('.b10').css('background', 'url("bu/bu_sign.png")');}}var output = document.getElementById('output'); output.innerHTML = coin} </script> </input>
+
+    <input type="button" class="b11" onclick="b11Click();"> <script type="text/javascript">
+      function b11Click() {
+        if ( setYard[1] == 1 && setYard[2] == 1 && setYard[3] == 1 && setYard[4] == 1 ) {
+          if ( coin > 79 || on[11] ) { //필요한 코인량-1; on[n] - n은 지금 버튼 숫자;
+            if ( on[11] == 0 ) { on[11] = 1; coin -= 80; } //그냥 on[n];(2번) 해금 시 필요한 코인 + 2;
+            $('.b11').css('background', 'url("bu/bu_soil11.png")');}}var output = document.getElementById('output'); output.innerHTML = coin} </script> </input>
+
+  </body>
+</html>

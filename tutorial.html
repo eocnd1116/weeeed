@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body style="-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none">
+    <img id = "dVoid" src = "ui/ui_down_void.png">
+    <img id = "uVoid" src = "ui/ui_up_void.png">
+
+    <div class="relative">
+      <div class="image">
+        <img src = "ui/ui_coin.png" webkit-user-drag: none;>
+        <div class="text">
+          <span style="text-shadow: -1px 0 #630d26, 0 1px #630d26, 1px 0 #630d26, 0 -1px #630d26;">
+            <font color=#fbc531>
+              <div id = "output"></div>
+            </font>
+          </span>
+        </div>
+      </div>
+    </div>
+    <img class = "signId" id = "signUi" src = "ui/ui_sign.png">
+    <input type="button" class="back" id = "tutorialUi" onclick="backClick();">
+      <script type="text/javascript">
+        function backClick() {
+          location.href='index.html'
+        }
+      </script>
+    </input>
+  </body>
+</html>
